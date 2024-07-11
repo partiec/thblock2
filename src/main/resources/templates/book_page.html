@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<div data-th-insert="~{parts/navigation::dtfragment}"></div>
+<h1>Welcome to the book page <span data-th-text="${userLogin}"></span></h1>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th></th>
+    </tr>
+    <data-th-block data-th-each="book : ${userBooks}">
+        <tr>
+            <td data-th-text="${book.title}"></td>
+            <td data-th-text="${book.year}"></td>
+            <td><button><a data-th-href="@{|/books/edit/${book.title}|}">Edit</a></button></td>
+            <td><button><a data-th-href="@{|/books/delete/${book.title}|}">Delete</a></button></td>
+        </tr>
+    </data-th-block>
+</table>
+<a href="/books/create">Add new book</a>
+<div data-th-insert="~{parts/footer::footer}"></div>
+</body>
+</html>
